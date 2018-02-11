@@ -1,0 +1,47 @@
+!DOCTYPE html>
+<html>
+<head>
+<script>
+
+
+
+function validateForm() {
+    var x = document.forms["myForm"]["fname"].value;
+    if (x == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+}
+</script>
+</head>
+<body>
+
+<h1>  Welcome to my javaScript page</h1>
+<p> If you  want to do anything on the website, please add your name below. </p> 
+
+<p id="p1">LEAVE THIS PAGE NOW!</p>
+<p id="p2">LEAVE THIS PAGE NOW!</p>
+
+<script>
+document.getElementById("p2").style.color = "blue";
+document.getElementById("p2").style.fontFamily = "Arial";
+document.getElementById("p2").style.fontSize = "larger";
+</script>
+<p>The paragraph above was changed by a script.</p>
+
+<script>
+    function visitPage(){
+        window.location='http://rkwamou.github.io/index.html';
+    }
+</script>
+<button onclick="visitPage();">Visit My Other Page NOW </button>
+
+<form name="myForm" action="/action_page.php"
+onsubmit="return validateForm()" method="post">
+Name: <input type="text" name="fname">
+<input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
+
