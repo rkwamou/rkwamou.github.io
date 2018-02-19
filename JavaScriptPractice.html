@@ -1,0 +1,66 @@
+<html> 
+	<head>
+		<title> More JavaScript </title>
+			<link rel="stylesheet" href="mystylesheet.css">
+			<script>
+			
+			var musics = [
+			{
+			"Name": " Shape of You", 
+			 "Artist": "Ed Sheeran",
+			 "Genre": "pop"
+			}, 
+			{
+			"Name": "That's What I like", 
+			"Artist": "Bruno Mars", 
+			"Genre": "R&B"
+			}, 
+			{
+			"Name": "Humble", 
+			"Artist": "Kendrick Lamar", 
+			"Genre": "HIP-Hop" 
+			}, 
+			{
+			"Name": " Mask Off", 
+			"Artist": "Future",
+			"Genre": "Hip-Hop" 
+			}, 
+			{
+			"Name": "location ", 
+			"Artist": "Khalid",
+			"Genre" :"HIP-Hop"
+			}
+		];
+			
+			</script>
+			
+			
+			</head>
+			<body>
+  <h1>Playlist of My Top Five Song</h1>
+
+  <table border=1 class="Right">
+	<thead>
+      <tr>
+		    <th>Name</th><th>Artist</th><th>Genre</th>
+      </tr>
+  </thead> 
+  <tbody id="Topsong">
+
+  </tbody>
+  </table>
+
+<script>
+
+  var text = " "
+  for (var m in musics) {
+		if (musics.hasOwnProperty(m)) {
+        var obj = musics[m];
+				text += "<tr><td>" + obj['Name'] + "</td><td>" + obj['Artist'] + "</td><td>" + obj['Genre'] + "</td></tr>"
+		}
+	}
+  document.getElementById("Topsong").innerHTML = text;
+</script>	
+<p> This is the link to my Home page: <a href="http://rkwamou.github.io/">Link Here</a></p>
+</body>
+</html>
