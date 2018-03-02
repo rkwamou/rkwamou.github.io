@@ -1,0 +1,378 @@
+<html>
+<head>
+<!-- CSS -->
+<link rel="stylesheet" href="mystylesheet.css">
+<style type="text/css">
+	div {
+		margin-bottom: 20px;
+	}
+
+    table, th, td{
+        border: 1px solid black;
+    }
+
+    #dTable tr:not(:first-child) {
+        font-family: Times New Roman;
+    }
+    #dTable tr:first-child {
+        background: DarkSlateBlue;
+        color : Red;
+        font-family: Times New Roman;
+    }
+
+    #dTable tr:not(:first-child):hover {
+        background-color: lightSalmon;
+    }
+
+    #sTable {
+        margin-top: 10px;
+        font-family: Times New Roman;
+    }
+</style>
+
+<!-- Data -->
+<script>
+
+// Don't copy this to any other places in this file. You can just use the "organizations" variable to do your assignment. 
+var organizations = [
+	 {
+        "Region": "East Asia & Pacific",
+        "Country": "New Zealand",
+        "Country Income Level": "High income",
+        "Organization Name": "200 Square",
+        "Organization Type": "For-profit",
+        "Sectors": "Housing, construction & real estate",
+        "Description": "200 Square is an online real estate agent in New Zealand.",        
+        "City": "Wellington",
+        "State/Region": "Wellington",
+        "Founding Year": 2010,
+        "Size": "1 to 10",
+        "Type of Data Used": "Housing, Education",
+        "profileID": "731"
+    },
+    {
+        "Region": "Europe & Central Asia",
+        "Country": "United Kingdom",
+        "Country Income Level": "High income",
+        "Organization Name": "21c Consultancy",
+        "Organization Type": "For-profit",
+        "Sectors": "IT and geospatial",
+        "Description": "21c is ICT innovation consultancy which advises international actors, institutions and governments around the world on technological trends which can affect the way they deliver services.",        
+        "City": "London",
+        "State/Region": "",
+        "Founding Year": 2015,
+        "Size": "1 to 10",
+        "Type of Data Used": "",
+        "profileID": "1694"
+    },
+    {
+        "Region": "Europe & Central Asia",
+        "Country": "Russian Federation",
+        "Country Income Level": "High income",
+        "Organization Name": "2GIS",
+        "Organization Type": "For-profit",
+        "Sectors": "IT and geospatial",
+        "Description": "2GIS is a city information service combined with a map. ",        
+        "City": "Novosibirsk",
+        "State/Region": "Novosibirsk Oblast",
+        "Founding Year": 2000,
+        "Size": "1000+",
+        "Type of Data Used": "Transportation, Geospatial, Business",
+        "profileID": "1025"
+    },
+    {
+        "Region": "North America",
+        "Country": "United States",
+        "Country Income Level": "High income",
+        "Organization Name": "2nd City Zoning",
+        "Organization Type": "Nonprofit",
+        "Sectors": "Housing, construction & real estate",
+        "Description": "An Open City App, 2nd City Zoning is an interactive map that lets you find out how your building is zoned, learn where to locate your business and explore zoning patterns throughout the city.",        
+        "City": "Chicago",
+        "State/Region": "Illinois",
+        "Founding Year": 2013,
+        "Size": "1 to 10",
+        "Type of Data Used": "Housing",
+        "profileID": "1693"
+    },
+    {
+        "Region": "North America",
+        "Country": "United States",
+        "Country Income Level": "High income",
+        "Organization Name": "3 Round Stones Inc",
+        "Organization Type": "For-profit",
+        "Sectors": "IT and geospatial",
+        "Description": "3 Round Stones' Open Source platform is used by the Fortune 2000 and US Government Agencies to collect, publish and reuse data, both public and proprietary.",
+        "City": "Arlington",
+        "State/Region": "Virginia",
+        "Founding Year": 2010,
+        "Size": "1 to 10",
+        "Type of Data Used": "Weather, Science and research, Health/healthcare, Geospatial, Environment, Energy, Demographic and social, Business",
+        "profileID": "580"
+    },
+    {
+        "Region": "North America",
+        "Country": "United States",
+        "Country Income Level": "High income",
+        "Organization Name": "360 Yield Center",
+        "Organization Type": "For-profit",
+        "Sectors": "Agriculture",
+        "Description": "Taking a 360-degree view of key yield-limiting variables, 360 Yield Center develops strategies for better-performing crops and better on-farm profits.",        
+        "City": "Morton",
+        "State/Region": "Illinois",
+        "Founding Year": 2014,
+        "Size": "51 to 200",
+        "Type of Data Used": "Agriculture, Environment, Weather",
+        "profileID": "1692"
+    },
+    {
+        "Region": "Europe & Central Asia",
+        "Country": "Denmark",
+        "Country Income Level": "High income",
+        "Organization Name": "3Strikes - City Stories",
+        "Organization Type": "For-profit",
+        "Sectors": "Arts, culture and tourism",
+        "Description": "City Stories provides a platform that allows users to explore local stories and simultaneously contribute their own.",
+        "City": "Aarhus",
+        "State/Region": "Central Denmark Region",
+        "Founding Year": 2015,
+        "Size": "1 to 10",
+        "Type of Data Used": "Arts and culture",
+        "profileID": "2278"
+    },
+    {
+        "Region": "Europe & Central Asia",
+        "Country": "Finland",
+        "Country Income Level": "High income",
+        "Organization Name": "3Tier (Europe) ",
+        "Organization Type": "For-profit",
+        "Sectors": "Energy and climate",
+        "Description": "3TIER is a global environmental and industrial measurement company providing weather-driven renewable energy risk assessment and forecasting for wind, solar, and hydro power projects.",        
+        "City": "Helsinki",
+        "State/Region": "Uusimaa",
+        "Founding Year": 2012,
+        "Size": "11 to 50",
+        "Type of Data Used": "Other, Environment",
+        "profileID": "952"
+    },
+    {
+        "Region": "North America",
+        "Country": "United States",
+        "Country Income Level": "High income",
+        "Organization Name": "5PSolutions",
+        "Organization Type": "For-profit",
+        "Sectors": "IT and geospatial",
+        "Description": "5PSolutions are artisans of mobile platforms.",       
+        "City": "Fairfax",
+        "State/Region": "Virginia",
+        "Founding Year": 2007,
+        "Size": "1 to 10",
+        "Type of Data Used": "Environment",
+        "profileID": "534"
+    },
+    {
+        "Region": "North America",
+        "Country": "United States",
+        "Country Income Level": "High income",
+        "Organization Name": "AAA National",
+        "Organization Type": "Other",
+        "Sectors": "Transportation and logistics",
+        "Description": "AAA provides services such as travel, automotive, insurance, financial, and discounts.",        
+        "City": "Irving",
+        "State/Region": "Texas",
+        "Founding Year": 1902,
+        "Size": "201 to 1000",
+        "Type of Data Used": "Transportation",
+        "profileID": "1691"
+    },
+    {
+        "Region": "North America",
+        "Country": "United States",
+        "Country Income Level": "High income",
+        "Organization Name": "AAASHTO",
+        "Organization Type": "Other",
+        "Sectors": "Transportation and logistics",
+        "Description": "AASHTO works to educate the public and key decision makers about the critical role that transportation plays in securing a good quality of life and sound economy. AASHTO serves as a liaison between state departments of transportation and the Federal government.",
+        "City": "Washington",
+        "State/Region": "DC",
+        "Founding Year": 1913,
+        "Size": "51 to 200",
+        "Type of Data Used": "Transportation",
+        "profileID": "1690"
+    },
+    {
+        "Region": "Latin America & Caribbean",
+        "Country": "Chile",
+        "Country Income Level": "High income",
+        "Organization Name": "ABRELATAM",
+        "Organization Type": "Nonprofit",
+        "Sectors": "Governance",
+        "Description": "ABRELATAM is an conference that seeks to accelerate the process of opening information through Open Data transparency and promote the Latin America.",        
+        "City": "Santiago",
+        "State/Region": "",
+        "Founding Year": 2015,
+        "Size": "",
+        "Type of Data Used": "",
+        "profileID": "1687"
+    }
+];
+</script>
+
+</head>
+
+<body>
+<h1> My First Assignment</h1>
+<!-- Feel free to add empty tags. Data shouldn't be here. -->
+	<div id="org_table"></div>
+	
+<script>
+// outputs the first item of the organizations array. Just for testing.
+console.log(organizations[0]); 
+// Your JavaScript code goes here
+var finalStats = document.createElement("TABLE");
+finalStats.id = "sTable";
+var finalTable = document.createElement("TABLE");
+finalTable.id = "dTable";
+
+var table = '';
+var rows = 13;
+var columns = 13;
+for (var r = 0; r < rows; r++)
+{
+    if(r == 0){
+        table += '<tr class = "unclickable">';
+    } else {
+        table += '<tr class = "clickable">';
+    }
+    for (var c = 0; c < columns; c++)
+    {
+        if(r == 0)
+        {
+            table += "<td>Region</td><td>Country</td><td>Country Income Level</td><td>Organization Name</td><td>Organization Type</td><td>Sector</td><td>Description</td><td>City</td><td>State/Region</td><td>Founding Year</td><td>Size</td><td>Type of Data Used</td><td>ProfileID</td>"
+            break;
+        } else 
+        {
+            switch (c){
+                case 0:
+                    table += '<td>' + organizations[r-1]['Region']+ '</td>';
+                    break;
+                case 1:
+                    table += '<td>' + organizations[r-1]["Country"] + '</td>';
+                    break;
+                case 2:
+                    table += '<td>' + organizations[r-1]["Country Income Level"] + '</td>';
+                    break;
+                case 3:
+                    table += '<td>' + organizations[r-1]["Organization Name"] + '</td>';
+                    break;
+                case 4:
+                    table += '<td>' + organizations[r-1]["Organization Type"] + '</td>';
+                    break;
+                case 5:
+                    table += '<td>' + organizations[r-1]["Sectors"] + '</td>';
+                    break;
+                case 6:
+                    table += '<td>' + organizations[r-1]["Description"] + '</td>';
+                    break;
+                case 7:
+                    table += '<td>' + organizations[r-1]["City"] + '</td>';
+                    break;
+                case 8:
+                    table += '<td>' + organizations[r-1]["State/Region"] + '</td>';
+                    break;
+                case 9:
+                    table += '<td>' + organizations[r-1]["Founding Year"] + '</td>';
+                    break;
+                case 10:
+                    table += '<td>' + organizations[r-1]["Size"]+ '</td>';
+                    break;
+                case 11:
+                    table += '<td>' + organizations[r-1]["Type of Data Used"] + '</td>';
+                    break;
+                case 12:
+                    table += '<td>' + organizations[r-1]["profileID"] + '</td>';
+                    break;
+            }
+
+        }
+    }
+    table += '</tr>';
+}
+finalTable.innerHTML = table;
+document.getElementById('org_table').appendChild(finalTable);
+
+var after2000 = 0;
+var orgCount = 0;
+var forProfitCount = 0;
+var highIncomeCount = 0;
+
+function countOrgs(){
+    var elements = document.getElementsByClassName("clickable");
+    orgCount = elements.length;
+}
+
+function countafter2000() {
+    var elements = document.getElementsByClassName("clickable");
+    for(var x = 0; x < elements.length; x++){
+        if(elements[x].cells[2].innerHTML == "High income"){
+            highIncomeCount++;
+        }
+    }
+}
+
+function countForProfit(){
+    var elements = document.getElementsByClassName("clickable");
+    for(var x = 0; x < elements.length; x++){
+        if(elements[x].cells[4].innerHTML == "For-profit"){
+            forProfitCount++;
+        }
+    }
+}
+
+function countHighIncome() {
+    var elements = document.getElementsByClassName("clickable");
+    for(var x = 0; x < elements.length; x++){
+        if(elements[x].cells[9].innerHTML > 2000){
+            after2000++;
+        }
+    }
+}
+
+function refreshsTable(){
+    finalStats.innerHTML = "<tr>Statistics</tr>"
+    finalStats.innerHTML += "<tr><td>Total Number of Organizations: </td>" + "<td>" + orgCount + "</td>" + "</tr>";
+    finalStats.innerHTML += "<tr><td>Total Number of High Income Organizations: </td>" + "<td>" + highIncomeCount + "</td>" + "</tr>";
+    finalStats.innerHTML += "<tr><td>Total Number of Organizations Founded After 2000: </td>" + "<td>" + after2000 + "</td>" + "</tr>";
+    finalStats.innerHTML += "<tr><td>Total Number of Organizations That Are For-Profit: </td>" + "<td>" + forProfitCount + "</td>" + "</tr>";
+    document.getElementById('org_table').appendChild(finalStats);
+}
+
+countOrgs();
+countafter2000();
+countForProfit();
+countHighIncome();
+refreshsTable();
+
+var elements = document.getElementsByClassName("clickable");
+for(var x = 0; x < elements.length; x++){
+    var element = elements[x];
+    element.addEventListener('click', function() {
+        orgCount--;
+        if(this.cells[2].innerHTML == "High income"){
+            highIncomeCount--;
+        }
+        if(this.cells[4].innerHTML == "For-profit"){
+            forProfitCount--;
+        }
+        if(this.cells[9].innerHTML > 2000){
+            after2000--;
+        }
+        this.style.display = "none";
+        refreshsTable();
+    })
+}
+
+</script>
+		<p>Here's a link to my github repo: <a href="https://github.com/rkwamou" target="new">Github Go</a></p>
+</body>
+</html>
